@@ -1,0 +1,18 @@
+<% layout("/layouts/boilerplate") %>
+<div>
+    <h1>Welcome to Notes Manager </h1>
+    <button>
+        <a href="/notes/new">Create a New Note</a>
+    </button>
+    
+    <div>
+        <% for (let data of allData) { %>
+            <a href="/notes/<%= data.id %>"><%= data.title %></a>
+            <div>
+                <h3><%= data.title %></h3>
+                <h4><%= data.category %></h4>
+                <p><%= data.description %></p>
+            </div>
+        <% } %>
+    </div>
+</div>
