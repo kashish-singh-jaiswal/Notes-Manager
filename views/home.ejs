@@ -1,18 +1,23 @@
-<% layout("/layouts/boilerplate") %>
-<div>
-    <h1>Welcome to Notes Manager </h1>
-    <button>
-        <a href="/notes/new">Create a New Note</a>
-    </button>
+<%- include("layout", { body: `
+<h2>All Notes</h2>
+
+<form method="GET" action="/">
+    <input type="text" name="search" placeholder="Search title..." value="${search || ''}">
     
-    <div>
-        <% for (let data of allData) { %>
-            <a href="/notes/<%= data.id %>"><%= data.title %></a>
-            <div>
-                <h3><%= data.title %></h3>
-                <h4><%= data.category %></h4>
-                <p><%= data.description %></p>
-            </div>
-        <% } %>
-    </div>
+    <select name="category">
+        <option ${category === 'All' ? 'selected' : ''}>All</option>
+        <option value="Work" ${category === 'Work' ? 'selected' : ''}>Work</option>
+        <option value="Personal" ${category === 'Personal' ? 'selected' : ''}>Personal</option>
+        <option value="Ideas" ${category === 'Ideas' ? 'selected' : ''}>Ideas</option>
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+
+<div class="notes-container">
+    ${notes.map(note => `
+        <%- include("partials/noteCard", { note: note }) %>
+    `).join("")}
 </div>
+
+` }) %>

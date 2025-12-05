@@ -1,0 +1,11 @@
+body { font-family: sans-serif; background: #f5f5f5; }
+.container { width: 80%; margin: auto; padding: 20px; }
+nav { background: #333; color: #fff; padding: 15px; }
+nav a { margin-left: 20px; color: #fff; text-decoration: none; }
+.note-card {
+  background: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+.error { color: red; }
